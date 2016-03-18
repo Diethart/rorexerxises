@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+
+  <tr>
+    <td> Original text </td>
+    <td> Translated text </td>
+    <td> Date </td>
+  </tr>
+
+  <% @cards.each do |card| %>
+    <tr> 
+      <td> <%= card.original_text %> </td>
+      <td> <%= card.translated_text %> </td>
+      <td> <%= card.review_date %> </td>
+    </tr>
+  <% end %>
+
+</table>
