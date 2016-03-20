@@ -1,0 +1,12 @@
+<div class="jumbotron vertical-center">
+<div class="container text-center">
+  <p> Card number: <%= @card.id %> </p>
+  <p> Original text: <%= @card.original_text %> </p>
+  <p> Translated text: <%= @card.translated_text %> </p>
+  <p> Review date: <%= @card.review_date %> </p>
+  <p>
+    <a class="btn btn-primary btn-lg" href=<%= edit_card_path(@card) %> role="button">Edit</a>
+    <a class="btn btn-primary btn-lg" data-method="delete" href=<%= card_path(@card) %> role="button">Delete</a>
+  </p>
+</div>
+</div>
