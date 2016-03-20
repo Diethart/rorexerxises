@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'open-uri'
+url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words"
+
+page = Nokogiri::HTML(open(url))
+
+words = Hash[page.css('td.bigLetter').map { |original_word| original_word.content }.zip(page.css('td.bigLetter + td').map { |translated_word| translated_word.content })]  
+
+words.each_pair do |original, translated|
+  Card.create(original_text: original, translated_text: translated, review_date: Date.today + 3 )
+end
