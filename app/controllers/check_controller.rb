@@ -1,5 +1,4 @@
 class CheckController < ApplicationController
-  attr_accessor :card_random
   def index
     @card_random = Card.random.first
   end
