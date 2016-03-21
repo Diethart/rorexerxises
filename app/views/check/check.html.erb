@@ -1,0 +1,13 @@
+<p>
+<% if @result %>
+  <label> Yes! You're right! </label>
+<% else %>
+  <label> Sorry, but you're wrong... </label>
+<% end %>
+</p>
+<p>
+  <label> Try again! </label>
+</p>
+<p>
+  <a href=<%= check_index_path %> class="btn btn-info" role="button"> Again! </a>
+</p>
