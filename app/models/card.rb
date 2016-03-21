@@ -11,16 +11,9 @@ class Card < ActiveRecord::Base
     errors.add(:original_text, "can't be the same with translated_text") if original_text.downcase == translated_text.downcase
   end
 
-  def self.correct?(id, text)
-    @card = self.find(id)
-    return true if @card.original_text.downcase == text.downcase
+  def correct?(text)
+    return true if self.original_text.downcase == text.downcase
     false
-  end
-
-  def self.renew_date(id)
-    @card = self.find(id)
-    @card.review_date = Date.today + 3
-    @card.save
   end
 
 end

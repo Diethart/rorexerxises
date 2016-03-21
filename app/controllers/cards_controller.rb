@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
 
   def index
-    @cards = Card.all.order('review_date')
+    @cards = Card.order('review_date')
   end
 
   def new
