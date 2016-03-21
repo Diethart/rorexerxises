@@ -4,7 +4,7 @@ class Card < ActiveRecord::Base
   validates :review_date, presence: true
   validate :equal
 
-  scope :date_check, -> {where( "review_date <= ?", Date.today )}
+  scope :date_check, -> {where( "review_date <= ?", Date.today)}
   scope :random, -> { date_check.order("RANDOM()").limit(1) }
 
   def equal
