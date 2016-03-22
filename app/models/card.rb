@@ -12,11 +12,11 @@ class Card < ActiveRecord::Base
   end
 
   def correct?(text)
-    self.original_text.downcase == text.downcase
+    original_text.downcase == text.downcase
   end
 
   def date_increase
-    self.update(review_date: Date.today + 3)
+    update(review_date: Date.today + 3)
   end
 
 end

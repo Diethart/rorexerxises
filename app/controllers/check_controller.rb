@@ -4,9 +4,15 @@ class CheckController < ApplicationController
   end
 
   def check
-    @card_checking = Card.find(params[:card][:id])
-    @result = @card_checking.correct? params[:card][:original_text]
-    @card_checking.date_increase if @result
+    card = Card.find(params[:card][:id])
+    result = card.correct? params[:card][:original_text]
+    if result
+      card.date_increase
+      flash[:success] = "Вы угадали!"
+    else
+      flash[:danger] = "Вы ошиблись! Попробуйте снова!"
+    end
+    redirect_to root_path
   end
 
 end
