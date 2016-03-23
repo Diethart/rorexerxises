@@ -1,0 +1,10 @@
+<% if @card_random %>
+  <%= simple_form_for @card_random, url: check_path, method: :post do |f| %>
+    <label> Translated text: <%= @card_random.translated_text %> </label>
+    <%= f.input :original_text , placeholder: "Введите верный перевод", input_html: { value: nil } %>
+    <%= f.hidden_field :id, :value => @card_random.id %>
+    <%= f.submit 'Check' %>
+  <% end %>
+<% else %>
+  <label> All right, there is no unseen cards! </label>
+<% end %>

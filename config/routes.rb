@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  root 'welcome#index'
+  post 'check', to: 'check#check'
+  root 'check#index'
 
   resources :cards
 end
