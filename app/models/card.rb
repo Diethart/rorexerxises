@@ -4,8 +4,10 @@ class Card < ActiveRecord::Base
   validates :review_date, presence: true
   validate :equal
 
-  scope :date_check, -> {where( "review_date <= ?", Date.today)}
-  scope :random, -> { date_check.order("RANDOM()").limit(1).first }
+
+  def self.random
+    where( "review_date <= ?", Date.today ).order("RANDOM()").take
+  end
 
   def equal
     errors.add(:original_text, "can't be the same with translated_text") if original_text.downcase == translated_text.downcase
