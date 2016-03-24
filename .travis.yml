@@ -3,3 +3,5 @@ rvm:
   - 2.3.0
 env:
 - DB=postgres
+services:
+  - postgresql
