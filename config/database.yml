@@ -34,7 +34,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['TRAVIS'] ? 'travis_ci_test' : 'diethart' %>
+  database: <%= ENV['TRAVIS'] ? 'travis_ci_test' : 'railsfirst_test' %>
   pool: 5
   username: <%= ENV['TRAVIS'] ? 'postgres' : 'diethart' %>
   password: <%= ENV['TRAVIS'] ? '' : 'Gfifhiuh4334' %>
