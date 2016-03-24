@@ -20,5 +20,4 @@ RSpec.feature "CardChecks", type: :feature do
 
     expect(page).to have_text("Danger!")
   end
-
 end
