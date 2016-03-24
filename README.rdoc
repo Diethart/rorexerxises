@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Diethart/rorexerxises.svg?branch=master)](https://travis-ci.org/Diethart/rorexerxises)
+{<img src="https://travis-ci.org/Diethart/rorexerxises.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/Diethart/rorexerxises]
 == README
 
 This README would normally document whatever steps are necessary to get the
