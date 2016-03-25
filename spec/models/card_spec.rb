@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  let(:card) { FactoryGirl.build(:card) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let(:card)  { FactoryGirl.build(:card) }
 
   describe '#correct?' do
 
