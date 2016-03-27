@@ -76,7 +76,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce] .
   # Default: `[]`
   #
-  # config.external_providers =
+   config.external_providers = [:twitter]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -110,10 +110,10 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter will not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  # config.twitter.key = ""
-  # config.twitter.secret = ""
-  # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-  # config.twitter.user_info_mapping = {:email => "screen_name"}
+   config.twitter.key = "lre9rgen3rFrsqdYGBOUG4rQN"
+   config.twitter.secret = "PuKfR1ExqGGJEh6GxW4ahWLZEwdUpXgEnex6aru1xJwH2Loy2y"
+   config.twitter.callback_url = "http://192.168.1.36:3000/oauth/callback?provider=twitter"
+   config.twitter.user_info_mapping = {:email => "screen_name"}
   #
   # config.facebook.key = ""
   # config.facebook.secret = ""
@@ -174,7 +174,7 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `[:email]`
     #
     # user.username_attribute_names =
-
+    user.authentications_class = Authentication
 
     # change *virtual* password attribute, the one which is used until an encrypted one is generated.
     # Default: `:password`

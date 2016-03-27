@@ -15,7 +15,7 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    if current_user.nil? || @card.user_id != current_user.i
+    if current_user.nil? || @card.user_id != current_user.id
       flash[:danger] = "Доступ запрещен!"
       current_user.nil? ? (redirect_to new_user_path) : (redirect_to action: 'index')
     end

@@ -27,6 +27,7 @@
               <li><a href= <%= user_path(current_user.id) %> >Мой профиль</a></li>
               <li><%= link_to 'Выйти', logout_path, method: :delete %></li>
             <% else %>
+              <li><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></li>
               <li><a href= <%= new_user_path %> >Регистрация</a></li>
               <li><a href= <%= login_path %>    >Войти</a></li>
             <% end %>
