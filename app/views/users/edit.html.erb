@@ -1,0 +1,13 @@
+<% case attr %>
+<% when "email" %>
+  <%= simple_form_for @user, method: :patch do |f| %>
+    <%= f.input :email %>
+    <%= f.button :submit %>
+  <% end %>
+<% when "password" %>
+  <%= simple_form_for @user, method: :patch do |f| %>
+    <%= f.input :password, input_html: { value: "*****" } %>
+    <%= f.input :password_confirmation, input_html: { value: "*****" } %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>

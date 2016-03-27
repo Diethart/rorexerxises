@@ -43,11 +43,11 @@ RSpec.describe Card, type: :model do
     let!(:card) { FactoryGirl.create(:card) }
 
     it 'review date should be today' do
-      expect(Card.random.review_date).to eq(Date.today)
+      expect(Card.random(card.user_id).review_date).to eq(Date.today)
     end
 
     it 'shouldnt be later than today' do
-      expect(Card.random.review_date).not_to be > Date.today
+      expect(Card.random(card.user_id).review_date).not_to be > Date.today
     end
   end
 

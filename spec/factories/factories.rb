@@ -3,6 +3,7 @@ FactoryGirl.define do
   factory :user do
     email 'someemail@gmail.com'
     password '1111'
+    password_confirmation '1111'
   end
 
   factory :card do
