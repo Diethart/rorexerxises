@@ -8,16 +8,6 @@ RSpec.feature "CardChecks", type: :feature do
     login_user_post("someemail@gmail.com", "1111")
   end
 
-  scenario 'User input wrong data' do
-    visit login_path
-
-    fill_in 'user_email',    with: "text1"
-    fill_in 'user_password', with: "text2"
-    click_button 'Login'
-
-    expect(page).to have_text("Неверный e-mail или пароль")
-  end
-
   scenario 'User check(right word)' do
     visit check_path
 
