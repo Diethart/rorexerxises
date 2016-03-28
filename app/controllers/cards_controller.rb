@@ -1,5 +1,3 @@
-require 'pp'
-
 class CardsController < ApplicationController
 
   def index
@@ -35,7 +33,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :avatar)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id)
   end
 
 end
