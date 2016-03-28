@@ -1,11 +1,13 @@
 class Card < ActiveRecord::Base
+  mount_uploader :avatar, CardAvatarUploader
+
   belongs_to :user
   validates :original_text, :translated_text, :review_date, :user_id, presence: true
   validate :equal
 
 
   def self.random
-    where( "review_date <= ?", Date.today ).order("RANDOM()").take
+    where( "review_date <= ?", Date.today).order("RANDOM()").take
   end
 
   def equal
