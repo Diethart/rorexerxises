@@ -1,6 +1,7 @@
 <%= simple_form_for @card do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
+  <%= f.input :avatar, type: :file %>
   <%= f.hidden_field :review_date, value: Date.today + 3 %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.button :submit %>
