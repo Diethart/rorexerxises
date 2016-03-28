@@ -6,6 +6,9 @@ gem 'rails', '4.2.6'
 gem 'pg'
 gem 'simple_form'
 gem 'nokogiri'
+gem 'sorcery'
+gem 'figaro'
+gem 'database_cleaner'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
