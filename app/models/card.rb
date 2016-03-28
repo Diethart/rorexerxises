@@ -5,7 +5,7 @@ class Card < ActiveRecord::Base
 
 
   def self.random(id)
-    where( "review_date <= ?", Date.today ).where( "user_id = ?", id).order("RANDOM()").take
+    where( "review_date <= ?", Date.today ).order("RANDOM()").take
   end
 
   def equal

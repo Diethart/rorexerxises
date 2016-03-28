@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
 
   def index
-    @cards = Card.where('user_id = ?', current_user.id).order('review_date')
+    @cards = current_user.cards.order('review_date')
   end
 
   def new
@@ -14,23 +14,15 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find(params[:id])
-    if current_user.nil? || @card.user_id != current_user.id
-      flash[:danger] = "Доступ запрещен!"
-      current_user.nil? ? (redirect_to new_user_path) : (redirect_to action: 'index')
-    end
+    @card = current_user.cards.find(params[:id])
   end
 
   def edit
-    @card = Card.find(params[:id])
-    if current_user.nil? || @card.user_id != current_user.id
-      flash[:danger] = "Доступ запрещен!"
-      current_user.nil? ? (redirect_to new_user_path) : (redirect_to action: 'index')
-    end
+    @card = current_user.cards.find(params[:id])
   end
 
   def update
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
     @card.update(card_params)
     redirect_to @card
   end

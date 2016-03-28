@@ -1,7 +1,7 @@
 class CheckController < ApplicationController
 
   def index
-    @card_random = Card.random(current_user.id)
+    @card_random = current_user.cards.random
   end
 
   def check
