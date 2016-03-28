@@ -1,6 +1,6 @@
 tmp/*
 log/*
 config/initializers/sorcery.rb
-public/uploads/*
+
 # Ignore application configuration
 /config/application.yml
