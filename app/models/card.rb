@@ -4,7 +4,7 @@ class Card < ActiveRecord::Base
   validate :equal
 
 
-  def self.random(id)
+  def self.random
     where( "review_date <= ?", Date.today ).order("RANDOM()").take
   end
 
