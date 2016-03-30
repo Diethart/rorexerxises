@@ -2,7 +2,9 @@ require 'carrierwave/test/matchers'
 
 describe CardAvatarUploader do
   include CarrierWave::Test::Matchers
-  let!(:card) { FactoryGirl.create(:card) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:deck) { FactoryGirl.create(:deck, user: user) }
+  let(:card) { FactoryGirl.create(:card, deck: deck, user: user) }
   let(:image_test) { "spec/test.jpg" }
 
   context 'the uploader' do

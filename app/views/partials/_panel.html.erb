@@ -1,0 +1,10 @@
+<div class="col-xs-3">
+  <ul class="nav nav-tabs tabs-left">
+
+    <li <%= params[:action] == "show"  ? ( 'class="active"'.html_safe ):("")  %>> <a href=<%= user_path(current_user.id)      %> >    Profile        </a></li>
+    <li <%= params[:action] == "edit"    ? ( 'class="active"'.html_safe ):("")  %>> <a href=<%= edit_user_path(current_user.id) %> >    Edit E-mail    </a></li>
+    <li <%= params[:action] == "index"    ? ( 'class="active"'.html_safe ):("")  %>> <a href=<%= decks_path                      %> >    Decks          </a></li>
+
+  </ul>
+</div>
+

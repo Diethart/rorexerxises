@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:index, :new, :create]
 
   def index
   end
@@ -19,26 +20,28 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
+    #flash.now[:active] = "profile" if flash[:active].nil?
   end
 
-  def show
-    @user = User.find(current_user.id)
+  def edit
+    @user = User.find(current_user)
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     if @user.update(user_params)
       flash[:success] = "Ваши данные изменены!"
     else
       flash[:danger] = "Где-то ошибка..."
     end
-    redirect_to @user
+    redirect_to :back
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
   end
 
 end

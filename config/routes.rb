@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :sessions, only: [:create]
   resources :users
+  resources :decks, except: [:show]
 
   get 'login' => 'sessions#new', :as => :login
   delete 'logout' => 'sessions#destroy', :as => :logout

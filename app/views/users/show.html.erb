@@ -1,15 +1,4 @@
-<div class="col-xs-3">
-    <ul class="nav nav-tabs tabs-left">
-      <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-      <li><a href="#edit_email" data-toggle="tab">Edit E-mail</a></li>
-      <li><a href="#edit_password" data-toggle="tab">Edit password</a></li>
-    </ul>
-</div>
-
+<%= render partial: "partials/panel" %>
 <div class="col-xs-9">
-    <div class="tab-content">
-      <div class="tab-pane active" id="profile"><%= current_user.email %></div>
-      <div class="tab-pane" id="edit_email"> <%= render :file => 'users/edit.html.erb', :locals => { :attr => "email" } %> </div>
-      <div class="tab-pane" id="edit_password"> <%= render :file => 'users/edit.html.erb', :locals => { :attr => "password" } %> </div>
-    </div>
+  <%= @user.email %>
 </div>
