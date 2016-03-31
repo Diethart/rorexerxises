@@ -22,7 +22,6 @@ class CardsController < ApplicationController
   end
 
   def show
-    redirect_to login_path if current_user.nil?
     @card = Deck.find(current_user.current_deck_id).cards.find(params[:id])
     @deck_name = Deck.find(@card.deck_id).name
   end
@@ -45,9 +44,6 @@ class CardsController < ApplicationController
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :avatar, :deck_id)
   end
-
-
-
 end
 
 

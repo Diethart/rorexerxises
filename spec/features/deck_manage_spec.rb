@@ -20,7 +20,7 @@ RSpec.feature "DeckManage", type: :feature do
 
     click_link 'Создать колоду'
     fill_in 'deck_name', with: "test_deck_name"
-    find("input[type=submit]").click
+    click_button 'Создать колоду'
 
     expect(page).to have_text("test_deck_name")
   end
@@ -29,7 +29,7 @@ RSpec.feature "DeckManage", type: :feature do
     visit decks_path
 
     click_link 'Создать колоду'
-    find("input[type=submit]").click
+    click_button 'Создать колоду'
 
     expect(page).to have_text("Вы должны ввести имя колоды!")
   end

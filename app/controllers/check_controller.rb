@@ -1,7 +1,7 @@
 class CheckController < ApplicationController
 
   def index
-    @card_random = Deck.find(current_user.current_deck_id).cards.random unless current_user.current_deck_id == nil
+    @card_random = current_user.current_deck.cards.random unless current_user.current_deck_id == nil
   end
 
   def check

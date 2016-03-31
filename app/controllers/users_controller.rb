@@ -21,7 +21,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    #flash.now[:active] = "profile" if flash[:active].nil?
   end
 
   def edit
@@ -29,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Ваши данные изменены!"
     else
