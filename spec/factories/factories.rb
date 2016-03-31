@@ -7,9 +7,13 @@ FactoryGirl.define do
     "person#{n}@example.com"
   end
 
+  sequence :name do |n|
+    "test_deck#{n}"
+  end
+
   factory :deck do
     user
-    name 'test_deck'
+    name
   end
 
   factory :user do
