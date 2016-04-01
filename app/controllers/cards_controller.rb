@@ -2,11 +2,11 @@ class CardsController < ApplicationController
   before_action :card, only: [:show, :edit, :update]
 
   def index
-    @cards = current_user.current_deck.cards if current_user.current_deck_id
+    @cards = current_user.current_deck.cards if have_current_deck?
   end
 
   def new
-  	@new_card = Card.new if current_user.current_deck_id
+  	@new_card = Card.new if have_current_deck?
   end
 
   def create
@@ -21,12 +21,10 @@ class CardsController < ApplicationController
   end
 
   def show
-    #@card = card
     @deck_name = Deck.find(@card.deck_id).name
   end
 
   def edit
-    #@card = card
   end
 
   def update
@@ -40,6 +38,10 @@ class CardsController < ApplicationController
   end
 
   private
+
+  def have_current_deck?
+    current_user.current_deck_id
+  end
 
   def card
     @card = current_user.current_deck.cards.find(params[:id])
