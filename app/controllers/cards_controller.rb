@@ -1,20 +1,19 @@
-require 'pp'
-
 class CardsController < ApplicationController
+  before_action :card, only: [:show, :edit, :update]
 
   def index
-    @cards = Deck.find(current_user.current_deck_id).cards.order('review_date') if current_user.current_deck_id
+    @cards = current_user.current_deck.cards if current_user.current_deck_id
   end
 
   def new
-  	@card = Card.new
+  	@new_card = Card.new if current_user.current_deck_id
   end
 
   def create
-    @card = Card.new(card_params)
-    if @card.save
+    @new_card = Card.new(card_params)
+    if @new_card.save
       flash[:success] = "Вы создали карточку!"
-      redirect_to @card
+      redirect_to @new_card
     else
       flash[:danger] = "Вы неправильно заполнили поля!"
       redirect_to :back
@@ -22,17 +21,17 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = card
-    @deck_name = Deck.find(card.deck_id).name
+    #@card = card
+    @deck_name = Deck.find(@card.deck_id).name
   end
 
   def edit
-    @card = card
+    #@card = card
   end
 
   def update
-    card.update(card_params)
-    redirect_to card
+    @card.update(card_params)
+    redirect_to @card
   end
 
   def destroy
@@ -43,7 +42,7 @@ class CardsController < ApplicationController
   private
 
   def card
-    current_user.current_deck.cards.find(params[:id])
+    @card = current_user.current_deck.cards.find(params[:id])
   end
 
   def card_params
