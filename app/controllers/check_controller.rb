@@ -1,7 +1,7 @@
 class CheckController < ApplicationController
 
   def index
-    @card_random = current_user.cards.random
+    @card_random = current_user.current_deck.cards.random if current_user.current_deck
   end
 
   def check
@@ -13,7 +13,7 @@ class CheckController < ApplicationController
     else
       flash[:danger] = "Вы ошиблись! Попробуйте снова!"
     end
-    redirect_to root_path
+    redirect_to check_path
   end
 
 end

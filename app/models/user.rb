@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
+  has_many :decks, dependent: :destroy
   has_many :cards, dependent: :destroy
-  has_many :authentications, :dependent => :destroy
+  belongs_to :current_deck, class_name: "Deck", foreign_key: :current_deck_id
+  has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   validates :password, format: { with: /\A[a-zA-Z0-9_\-]+\z/ }, if: -> { new_record? || changes[:crypted_password] }

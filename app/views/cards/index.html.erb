@@ -1,3 +1,5 @@
+<% if @cards %>
+
 <table class="table table-bordered">
 
   <tr>
@@ -7,7 +9,7 @@
   </tr>
 
   <% @cards.each do |card| %>
-    <tr> 
+    <tr>
       <td> <%= card.original_text %> </td>
       <td> <%= card.translated_text %> </td>
       <td> <%= card.review_date %> </td>
@@ -18,3 +20,9 @@
   <% end %>
 
 </table>
+<% else %>
+
+<p> <label> У вас нет ни одной колоды! </label> </p>
+<a href= <%= new_deck_path %> class="btn btn-default" role="button"> Создать колоду </a>
+
+<% end %>

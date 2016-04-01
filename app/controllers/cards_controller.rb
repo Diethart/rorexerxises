@@ -1,30 +1,33 @@
-require 'pp'
-
 class CardsController < ApplicationController
+  before_action :card, only: [:show, :edit, :update]
 
   def index
-    @cards = current_user.cards.order('review_date')
+    @cards = current_user.current_deck.cards if have_current_deck?
   end
 
   def new
-  	@card = Card.new
+  	@new_card = Card.new if have_current_deck?
   end
 
   def create
-    @card = Card.create(card_params)
-    redirect_to @card
+    @new_card = Card.new(card_params)
+    if @new_card.save
+      flash[:success] = "Вы создали карточку!"
+      redirect_to @new_card
+    else
+      flash[:danger] = "Вы неправильно заполнили поля!"
+      redirect_to :back
+    end
   end
 
   def show
-    @card = current_user.cards.find(params[:id])
+    @deck_name = Deck.find(@card.deck_id).name
   end
 
   def edit
-    @card = current_user.cards.find(params[:id])
   end
 
   def update
-    @card = current_user.cards.find(params[:id])
     @card.update(card_params)
     redirect_to @card
   end
@@ -34,10 +37,19 @@ class CardsController < ApplicationController
     redirect_to action: 'index'
   end
 
-  def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :avatar)
+  private
+
+  def have_current_deck?
+    current_user.current_deck_id
   end
 
+  def card
+    @card = current_user.current_deck.cards.find(params[:id])
+  end
+
+  def card_params
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :avatar, :deck_id)
+  end
 end
 
 

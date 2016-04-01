@@ -7,7 +7,6 @@ module Sorcery
     end
   end
 end
-
 RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails
 

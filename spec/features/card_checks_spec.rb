@@ -1,11 +1,17 @@
 require 'rails_helper'
 require 'spec_helper'
 require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
 
 RSpec.feature "CardChecks", type: :feature do
-  given!(:card) { FactoryGirl.create(:card) }
+  #let!(:user) { FactoryGirl.create(:user_with_decks) } Это старый вариант, здесь создаю без связей
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:deck) { FactoryGirl.create(:deck, user: user) }
+  let!(:card) { FactoryGirl.create(:card, deck: deck, user: user) }
+
   before(:each) do
-    login_user_post("someemail@gmail.com", "1111")
+    user.update(current_deck_id: deck.id)
+    login_user_post(user.email, '1111')
   end
 
   scenario 'User check(right word)' do
