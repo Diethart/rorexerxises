@@ -15,6 +15,4 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require moment
-//= require bootstrap-datetimepicker
-//= require pickers
 //= require_tree .

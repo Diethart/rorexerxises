@@ -12,7 +12,6 @@
  *= require bootstrap.min
  *= require bootstrap-theme.min
  *= require bootstrap.vertical-tabs.min
- *= require bootstrap-datetimepicker.min
  *= require_tree .
  */
 #container {

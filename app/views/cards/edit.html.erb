@@ -2,8 +2,7 @@
   <%= f.input :original_text, input_html: { value: @card.original_text } %>
   <%= f.input :translated_text, input_html: { value: @card.translated_text } %>
   <% if current_user.email == "admin" %>
-    <%= f.input :review_date, as: :date_picker,
-                input_html: {data: {date_options: {defaultDate: '2012/12/25'}}} %>
+    <%= f.input :review_date %>
   <% end %>
   <%= f.input :avatar, type: :file %>
   <%= f.button :submit %>
