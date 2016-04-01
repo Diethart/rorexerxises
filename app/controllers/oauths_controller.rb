@@ -5,12 +5,10 @@ class OauthsController < ApplicationController
   end
 
   def callback
-    puts "here begins auth"
     provider = auth_params[:provider]
     if @user = login_from(provider)
       flash[:info] = "Зашел с #{provider.titleize}!"
       redirect_to root_path
-      puts 'here it end'
     else
       begin
         @user = create_from(provider)
