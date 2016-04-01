@@ -10,7 +10,7 @@
   </tr>
 
   <% @decks.each do |deck| %>
-    <tr>
+    <tr <%= "class='success'".html_safe if deck.id == current_user.current_deck_id %> >
       <td> <%= deck.name %>        </td>
       <td> <%= deck.cards.count %> </td>
       <td>
