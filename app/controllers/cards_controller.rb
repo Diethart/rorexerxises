@@ -3,7 +3,7 @@ require 'pp'
 class CardsController < ApplicationController
 
   def index
-    @cards = Deck.find(current_user.current_deck_id).cards.order('review_date') unless current_user.current_deck_id == nil
+    @cards = Deck.find(current_user.current_deck_id).cards.order('review_date') if current_user.current_deck_id
   end
 
   def new
@@ -22,23 +22,28 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Deck.find(current_user.current_deck_id).cards.find(params[:id])
-    @deck_name = Deck.find(@card.deck_id).name
+    @card = card
+    @deck_name = Deck.find(card.deck_id).name
   end
 
   def edit
-    @card = Deck.find(current_user.current_deck_id).cards.find(params[:id])
+    @card = card
   end
 
   def update
-    @card = Deck.find(current_user.current_deck_id).cards.find(params[:id])
-    @card.update(card_params)
-    redirect_to @card
+    card.update(card_params)
+    redirect_to card
   end
 
   def destroy
     Card.destroy(params[:id])
     redirect_to action: 'index'
+  end
+
+  private
+
+  def card
+    current_user.current_deck.cards.find(params[:id])
   end
 
   def card_params

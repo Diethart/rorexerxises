@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
   has_many :decks, dependent: :destroy
-  has_one  :current_deck, -> (user){ where "id = ?", user.current_deck_id }, class_name: "Deck"
   has_many :cards, dependent: :destroy
+  belongs_to :current_deck, class_name: "Deck", foreign_key: :current_deck_id
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
