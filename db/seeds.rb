@@ -13,9 +13,9 @@ page = Nokogiri::HTML(open(url))
 words = Hash[page.css('td.bigLetter').map { |original_word| original_word.content }.zip(page.css('td.bigLetter + td').map { |translated_word| translated_word.content })]
 
 
-test_user = User.create( email: "email@gmail.com", password: "password", password_confirmation: "password" )
+test_user = User.create( email: "admin", password: "admin", password_confirmation: "admin" )
 starting_deck = Deck.create( name: "starter's deck", user_id: test_user.id )
 test_user.update( current_deck_id: starting_deck.id )
 words.each_pair do |original, translated|
-  Card.create(original_text: original, translated_text: translated, user_id: test_uder.id, review_date: Date.today + 3, deck_id: starting_deck.id )
+  Card.create(original_text: original, translated_text: translated, user_id: test_user.id, review_date: Date.today + 3, deck_id: starting_deck.id )
 end
