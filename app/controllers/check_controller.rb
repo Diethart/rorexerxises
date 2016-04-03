@@ -11,7 +11,8 @@ class CheckController < ApplicationController
       card.date_increase
       flash[:success] = "Вы угадали!"
     else
-      flash[:danger] = "Вы ошиблись! Попробуйте снова!"
+      card.error
+      flash[:danger] = "Вы ошиблись! Попробуйте снова! У вас осталось #{3 - card.err_limit} попыток!"
     end
     redirect_to check_path
   end

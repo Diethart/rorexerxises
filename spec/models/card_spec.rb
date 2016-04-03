@@ -29,17 +29,25 @@ RSpec.describe Card, type: :model do
   end
 
   describe '#date_increase' do
+    let(:time_intervals) { [12.hours, 3.day, 1.week, 2.week, 1.month] }
 
-    it 'should be true' do
-      card.date_increase
-      expect(card.review_date).to eq(Date.today + 3)
-    end
-
-    it 'should be false' do
-      card.date_increase
-      expect(card.review_date).not_to eq(Date.today)
+    it 'should be 12h/3d/1w/2w/1m bigger than today' do
+      5.times do |i|
+        expect(card.date_increase.review_date).to eq(DateTime.now.beginning_of_hour + time_intervals[i])
+      end
     end
   end
+
+  describe '#error' do
+
+    it 'should turn memo_count to zero' do
+      3.times do
+        card.date_increase.error
+      end
+      expect(card.memo_count).to eq(0)
+    end
+  end
+
 
   describe '.random' do
     let!(:user) { FactoryGirl.create(:user) }
@@ -52,11 +60,11 @@ RSpec.describe Card, type: :model do
 
 
     it 'review date should be today' do
-      expect(user.current_deck.cards.random.review_date).to eq(Date.today)
+      expect(user.current_deck.cards.random.review_date).to eq(DateTime.now.beginning_of_hour)
     end
 
     it 'shouldnt be later than today' do
-      expect(user.current_deck.cards.random.review_date).not_to be > Date.today
+      expect(user.current_deck.cards.random.review_date).not_to be > DateTime.now
     end
   end
 end
