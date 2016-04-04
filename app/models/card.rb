@@ -22,13 +22,11 @@ class Card < ActiveRecord::Base
   end
 
   def right_answer
-    date_increase
-    memo_increase
+    memo_count < 4 ? ( update( review_date: time_now + INTERVALS[memo_count], memo_count: memo_count + 1 ) ) : ( date_increase )
   end
 
   def wrong_answer
-    error
-    update(memo_count: 0, err_limit: 0) if err_limit == 3
+    err_limit == 2 ? ( update(memo_count: 0, err_limit: 0, review_date: time_now + INTERVALS[0]) ) : ( err_limit_increase )
   end
 
   def self.intervals(index)
@@ -42,11 +40,11 @@ class Card < ActiveRecord::Base
   end
 
   def memo_increase
-    update(memo_count: memo_count + 1) if memo_count < 4
+    update(memo_count: memo_count + 1)
   end
 
-  def error
-    update(err_limit: err_limit + 1) if err_limit < 3
+  def err_limit_increase
+    update(err_limit: err_limit + 1)
   end
 
   def time_now
