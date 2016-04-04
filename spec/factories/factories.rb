@@ -27,7 +27,7 @@ FactoryGirl.define do
     deck
     original_text   'text'
     translated_text 'text2'
-    review_date     Date.today
+    review_date     DateTime.now.beginning_of_hour
   end
 
 end

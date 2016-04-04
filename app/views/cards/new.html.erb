@@ -3,7 +3,7 @@
     <%= f.input :original_text %>
     <%= f.input :translated_text %>
     <%= f.input :avatar, type: :file %>
-    <%= f.hidden_field :review_date, value: Date.today + 3 %>
+    <%= f.hidden_field :review_date, value: DateTime.now.beginning_of_hour %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :deck_id, value: current_user.current_deck_id %>
     <%= f.button :submit %>
