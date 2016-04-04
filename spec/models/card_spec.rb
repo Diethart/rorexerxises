@@ -52,7 +52,6 @@ RSpec.describe Card, type: :model do
       3.times do
         card.right_answer
         card.wrong_answer
-        p card.err_limit
       end
       expect(card.memo_count).to eq(0)
     end
