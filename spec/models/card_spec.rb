@@ -38,7 +38,7 @@ RSpec.describe Card, type: :model do
       end
     end
 
-    it 'should be 1m bigger than today' do
+    it 'should be 1 month bigger than today' do
       10.times do
         card.right_answer
       end
@@ -52,7 +52,6 @@ RSpec.describe Card, type: :model do
       3.times do
         card.right_answer
         card.wrong_answer
-        p card.err_limit
       end
       expect(card.memo_count).to eq(0)
     end

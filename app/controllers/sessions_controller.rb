@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @user = login(params[:user][:email], params[:user][:password])
+    @user = login(params[:user][:email], params[:user][:password])
+    if @user
       flash[:success] = 'Вы зашли в систему!'
       redirect_to check_path
     else
