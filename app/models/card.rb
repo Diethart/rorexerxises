@@ -6,6 +6,8 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, :user_id, presence: true
   validate :equal
 
+  INTERVALS = [12.hours, 3.day, 1.week, 2.week, 1.month]
+
 
   def self.random
     where( "review_date <= ?", DateTime.now.beginning_of_hour).order("RANDOM()").take
@@ -20,25 +22,21 @@ class Card < ActiveRecord::Base
   end
 
   def date_increase
-    case memo_count
-    when 0
-      update( review_date: time_now + 12.hour, memo_count: 1 )
-    when 1
-      update( review_date: time_now + 3.day,   memo_count: 2 )
-    when 2
-      update( review_date: time_now + 1.week,  memo_count: 3 )
-    when 3
-      update( review_date: time_now + 2.week,  memo_count: 4 )
-    when 4
-      update( review_date: time_now + 1.month )
-    end
+    self.review_date = time_now + INTERVALS[memo_count]
+    self.memo_count += 1 if memo_count < 4
+    save
     self
   end
 
   def error
-    update( err_limit: err_limit + 1)
-    update( err_limit: 0, memo_count: 0 ) if err_limit == 3
+    self.err_limit += 1
+    self.err_limit, self.memo_count = 0, 0 if err_limit == 3
+    save
     self
+  end
+
+  def self.intervals(index)
+    INTERVALS[index]
   end
 
   private

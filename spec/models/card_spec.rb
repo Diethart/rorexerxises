@@ -29,11 +29,11 @@ RSpec.describe Card, type: :model do
   end
 
   describe '#date_increase' do
-    let(:time_intervals) { [12.hours, 3.day, 1.week, 2.week, 1.month] }
+    let(:time) { DateTime.now.beginning_of_hour }
 
     it 'should be 12h/3d/1w/2w/1m bigger than today' do
       5.times do |i|
-        expect(card.date_increase.review_date).to eq(DateTime.now.beginning_of_hour + time_intervals[i])
+        expect(card.date_increase.review_date).to eq(time + Card.intervals(i))
       end
     end
   end
