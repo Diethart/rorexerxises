@@ -23,12 +23,12 @@ RSpec.feature "CardChecks", type: :feature do
     expect(page).to have_text("Success!")
   end
 
-  scenario 'User check(wrong word)' do
+  scenario 'User check word with 2 mistakes' do
     visit check_path
 
-    fill_in 'card_original_text', :with => 'text2'
+    fill_in 'card_original_text', :with => 'txet2'
     click_button 'Check'
 
-    expect(page).to have_text("Danger!")
+    expect(page).to have_text("Вы ввели слово txet2 вместо text и совершили 2 ошибок!")
   end
 end
