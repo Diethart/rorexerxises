@@ -38,7 +38,7 @@ RSpec.describe Card, type: :model do
       end
     end
 
-    it 'should be 1m bigger than today' do
+    it 'should be 1 month bigger than today' do
       10.times do
         card.right_answer
       end
