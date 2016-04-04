@@ -21,18 +21,14 @@ class Card < ActiveRecord::Base
     original_text.downcase == text.downcase
   end
 
-  def date_increase
-    self.review_date = time_now + INTERVALS[memo_count]
-    self.memo_count += 1 if memo_count < 4
-    save
-    self
+  def right_answer
+    date_increase
+    memo_increase
   end
 
-  def error
-    self.err_limit += 1
-    self.err_limit, self.memo_count = 0, 0 if err_limit == 3
-    save
-    self
+  def wrong_answer
+    error
+    update(memo_count: 0, err_limit: 0) if err_limit == 3
   end
 
   def self.intervals(index)
@@ -40,6 +36,18 @@ class Card < ActiveRecord::Base
   end
 
   private
+
+  def date_increase
+    update(review_date: time_now + INTERVALS[memo_count])
+  end
+
+  def memo_increase
+    update(memo_count: memo_count + 1) if memo_count < 4
+  end
+
+  def error
+    update(err_limit: err_limit + 1) if err_limit < 3
+  end
 
   def time_now
     DateTime.now.beginning_of_hour

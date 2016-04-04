@@ -28,21 +28,23 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  describe '#date_increase' do
+  describe '#right_answer' do
     let(:time) { DateTime.now.beginning_of_hour }
 
     it 'should be 12h/3d/1w/2w/1m bigger than today' do
       5.times do |i|
-        expect(card.date_increase.review_date).to eq(time + Card.intervals(i))
+        card.right_answer
+        expect(card.review_date).to eq(time + Card.intervals(i))
       end
     end
   end
 
-  describe '#error' do
+  describe '#wrong_answer' do
 
     it 'should turn memo_count to zero' do
       3.times do
-        card.date_increase.error
+        card.right_answer
+        card.wrong_answer
       end
       expect(card.memo_count).to eq(0)
     end
