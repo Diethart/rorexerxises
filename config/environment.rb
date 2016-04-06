@@ -4,14 +4,12 @@ require File.expand_path('../application', __FILE__)
 # Initialize the Rails application.
 Rails.application.initialize!
 
-ActionMailer::Base.raise_delivery_errors = true
-
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.gmail.com',
-  :domain         => 'mail.google.com',
-  :port           => 587,
-  :user_name      => ENV['GOOGLE_MAIL'],
-  :password       => ENV['GOOGLE_PASSWORD'],
-  :authentication => :plain,
-  :enable_starttls_auto => true
+  :user_name => '83e883cd07213a',
+  :password => 'c541ee436456a8',
+  :address => 'mailtrap.io',
+  :domain => 'mailtrap.io',
+  :port => '2525',
+  :authentication => :cram_md5
 }
