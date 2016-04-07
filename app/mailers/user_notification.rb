@@ -15,7 +15,7 @@ class UserNotification < ApplicationMailer
   end
 
   def notify_user(email, count)
-    @url  = ENV['HEROKU_URL'
+    @url  = ENV['HEROKU_URL']
     @cards_count = count
     mail(to: email, subject: "У вас есть непроверенные карточки!")
   end
