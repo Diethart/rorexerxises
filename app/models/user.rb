@@ -15,6 +15,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, if: -> { new_record? || changes[:email] }, email: true, uniqueness: true
 
   def self.get_users_with_number_of_expired_cards
-    @users = User.includes(:cards).where('cards.review_date <= ?', DateTime.now).references(:cards).map { |user| [user.email, user.cards.length] }
+    User.includes(:cards).where('cards.review_date <= ?', DateTime.now).references(:cards).map { |user| [user.email, user.cards.length] }
   end
 end
