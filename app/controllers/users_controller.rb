@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login( user_params[:email], user_params[:password] )
+      UserNotification.welcome_email(@user).deliver_later
       flash[:success] = 'Вы вошли в систему!'
       redirect_to cards_path
     else

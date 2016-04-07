@@ -13,6 +13,8 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'damerau-levenshtein'
+gem 'whenever', require: false
+gem 'valid_email'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
