@@ -1,0 +1,7 @@
+en:
+  deck_create:          "Create deck"
+  deck_name_create:     "Name of new deck"
+  deck_name:            "Deck's name"
+  deck_number_of_cards: "Number of cards"
+  deck_make_current:    "Make it current"
+  deck_delete:          "Delete deck"

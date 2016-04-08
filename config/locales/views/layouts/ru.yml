@@ -1,0 +1,10 @@
+ru:
+  flashcards_title:  "Флешкарточкер"
+  main:              "Главная"
+  all_cards:         "Все карточки"
+  add_card:          "Добавить карточку"
+  profile:           "Мой профиль"
+  exit:              "Выйти"
+  login_via_twitter: "Войти через Twitter"
+  register:          "Регистрация"
+  login:             "Войти"

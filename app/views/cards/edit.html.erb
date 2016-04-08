@@ -1,9 +1,9 @@
 <%= simple_form_for @card, method: :patch do |f| %>
-  <%= f.input :original_text, input_html: { value: @card.original_text } %>
-  <%= f.input :translated_text, input_html: { value: @card.translated_text } %>
+  <%= f.input :original_text,   label: t(:orig_text),  input_html: { value: @card.original_text }   %>
+  <%= f.input :translated_text, label: t(:trans_text), input_html: { value: @card.translated_text } %>
   <% if current_user.email == "admin" %>
-    <%= f.input :review_date %>
+    <%= f.input :review_date,   label: t(:review_date) %>
   <% end %>
-  <%= f.input :avatar, type: :file %>
-  <%= f.button :submit %>
+  <%= f.input  :avatar, label: t(:avatar), type: :file %>
+  <%= f.button :submit, t(:update_card) %>
 <% end %>

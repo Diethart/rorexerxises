@@ -9,11 +9,11 @@ class CheckController < ApplicationController
     result = card.correct? params[:card][:original_text]
     if result
       card.right_answer
-      flash[:success] = "Вы угадали!"
+      flash[:success] = t(:success_check)
     else
       card.wrong_answer
       err_number = check_by_levenshtein(card.original_text, params[:card][:original_text])
-      flash[:danger] = "Вы ошиблись! Попробуйте снова! У вас осталось #{3 - card.err_limit} попыток! Вы ввели слово #{params[:card][:original_text]} вместо #{card.original_text} и совершили #{err_number} ошибок!"
+      flash[:danger] = t(:danger_check, attempts: 3 - card.err_limit, entered_word: params[:card][:original_text], original_word: card.original_text, err_number: err_number)
     end
     redirect_to check_path
   end

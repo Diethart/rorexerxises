@@ -3,26 +3,26 @@
 <table class="table table-bordered">
 
   <tr>
-    <td> Original text </td>
-    <td> Translated text </td>
-    <td> Date </td>
+    <td> <%= t(:orig_text)  %> </td>
+    <td> <%= t(:trans_text) %> </td>
+    <td> <%= t(:review_date)       %> </td>
   </tr>
 
   <% @cards.each do |card| %>
     <tr>
-      <td> <%= card.original_text %> </td>
+      <td> <%= card.original_text   %> </td>
       <td> <%= card.translated_text %> </td>
-      <td> <%= card.review_date %> </td>
-      <td><%= link_to 'Show', card_path(card) %></td>
-      <td><%= link_to 'Edit', edit_card_path(card) %></td>
-      <td><%= link_to 'Delete', card_path(card), method: :delete %></td>
+      <td> <%= card.review_date     %> </td>
+      <td> <%= link_to t(:show),   card_path(card)                  %> </td>
+      <td> <%= link_to t(:edit),   edit_card_path(card)             %> </td>
+      <td> <%= link_to t(:delete), card_path(card), method: :delete %> </td>
     </tr>
   <% end %>
 
 </table>
 <% else %>
 
-<p> <label> У вас нет ни одной колоды! </label> </p>
-<a href= <%= new_deck_path %> class="btn btn-default" role="button"> Создать колоду </a>
+<p> <label> <%= t(:no_decks) %> </label> </p>
+<a href= <%= new_deck_path %> class="btn btn-default" role="button"> <%= t(:deck_create) %> </a>
 
 <% end %>

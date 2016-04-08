@@ -2,13 +2,13 @@
 <div class="container text-left">
   <img class="leftimg" src= <%= @card.avatar.url %> width="300" height="235">
 
-  <p> Deck name:       <%= @deck_name %> </p>
-  <p> Original text:   <%= @card.original_text %> </p>
-  <p> Translated text: <%= @card.translated_text %> </p>
-  <p> Review date:     <%= @card.review_date %> </p>
+  <p> <%= t(:deck_name)  %>: <%= @deck_name %> </p>
+  <p> <%= t(:orig_text)  %>: <%= @card.original_text %> </p>
+  <p> <%= t(:trans_text) %>: <%= @card.translated_text %> </p>
+  <p> <%= t(:review_date)       %>: <%= @card.review_date %> </p>
   <p>
-    <a class="btn btn-primary btn-lg"                      href=<%= edit_card_path(@card) %> role="button">Edit</a>
-    <a class="btn btn-primary btn-lg" data-method="delete" href= <%= card_path(@card)     %> role="button">Delete</a>
+    <a class="btn btn-primary btn-lg"                      href= <%= edit_card_path(@card) %> role="button"> <%= t(:edit)   %> </a>
+    <a class="btn btn-primary btn-lg" data-method="delete" href= <%= card_path(@card)      %> role="button"> <%= t(:delete) %> </a>
   </p>
 </div>
 </div>

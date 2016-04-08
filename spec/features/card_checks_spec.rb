@@ -18,17 +18,17 @@ RSpec.feature "CardChecks", type: :feature do
     visit check_path
 
     fill_in 'card_original_text', :with => 'text'
-    click_button 'Check'
+    click_button I18n.t(:check)
 
-    expect(page).to have_text("Success!")
+    expect(page).to have_text(I18n.t(:success_check))
   end
 
   scenario 'User check word with 2 mistakes' do
     visit check_path
 
     fill_in 'card_original_text', :with => 'txet2'
-    click_button 'Check'
+    click_button I18n.t(:check)
 
-    expect(page).to have_text("Вы ввели слово txet2 вместо text и совершили 2 ошибок!")
+    expect(page).to have_text(I18n.t(:danger_check, attempts: 2, entered_word: "txet2", original_word: "text", err_number: 2))
   end
 end

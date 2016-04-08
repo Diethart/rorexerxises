@@ -1,0 +1,4 @@
+en:
+  success_login: "You have successfully log in!"
+  danger_login:  "You entered wrong e-mail or password"
+  info_logout:   "You've logged out!"

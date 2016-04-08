@@ -1,0 +1,4 @@
+en:
+  check:             "Check"
+  placeholder_check: "Input correct original word"
+  check_ok:          "All right, there is no unchecked cards!"

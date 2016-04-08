@@ -8,17 +8,17 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
     @user = login_from(provider)
     if @user
-      flash[:info] = "Зашел с #{provider.titleize}!"
+      flash[:info] = t(:oauths_login, provider: provider.titleize)
       redirect_to root_path
     else
       begin
         @user = create_from(provider)
         reset_session
         auto_login(@user)
-        flash[:info] = "Зашел с #{provider.titleize}!"
+        flash[:info] = t(:oauths_login, provider: provider.titleize)
         redirect_to root_path
       rescue
-        flash[:danger] = "Failed to login from #{provider.titleize}!"
+        flash[:danger] = t(:oauths_danger, provider: provider.titleize)
         redirect_to root_path
       end
     end

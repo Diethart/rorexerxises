@@ -10,12 +10,16 @@ class DecksController < ApplicationController
 
   def create
     @deck = Deck.new(deck_params)
-    flash[:danger] = "Вы должны ввести имя колоды!" unless @deck.save
-    redirect_to action: "index"
+    if @deck.save
+      redirect_to action: "index"
+    else
+      flash[:danger] = t(:danger_deck_create)
+      redirect_to action: "new"
+    end
   end
 
   def destroy
-    current_user.current_deck_id == params[:id].to_i ? (flash[:danger] = "Нельзя удалить текущую колоду!"):(Deck.destroy(params[:id]))
+    current_user.current_deck_id == params[:id].to_i ? ( flash[:danger] = t(:danger_deck_delete) ):(Deck.destroy(params[:id]))
     redirect_to action: "index"
   end
 

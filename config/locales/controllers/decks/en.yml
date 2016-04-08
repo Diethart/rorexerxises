@@ -1,0 +1,3 @@
+en:
+  danger_deck_create: "You must input deck's name!"
+  danger_deck_delete: "You can't delete current deck!"

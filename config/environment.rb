@@ -2,6 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
+ActionMailer::Base.perform_deliveries = false if Rails.env.test?
 Rails.application.initialize!
 ActionMailer::Base.raise_delivery_errors = false
 ActionMailer::Base.smtp_settings = {

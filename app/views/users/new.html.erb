@@ -1,6 +1,7 @@
 <%= simple_form_for @user do |f| %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.button :submit, 'Register user' %>
+  <%= f.input :email,                 label: t(:user_email)    %>
+  <%= f.input :password,              label: t(:user_password) %>
+  <%= f.input :password_confirmation, label: t(:user_password_confirm) %>
+  <%= f.hidden_field :locale, value: @http_accept_language %>
+  <%= f.button :submit, t(:user_create) %>
 <% end %>

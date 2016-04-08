@@ -20,6 +20,7 @@ FactoryGirl.define do
     email
     password '1111'
     password_confirmation '1111'
+    locale 'ru'
   end
 
   factory :card do
