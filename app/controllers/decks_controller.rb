@@ -10,8 +10,12 @@ class DecksController < ApplicationController
 
   def create
     @deck = Deck.new(deck_params)
-    flash[:danger] = t(:danger_deck_create) unless @deck.save
-    redirect_to action: "new"
+    if @deck.save
+      redirect_to action: "index"
+    else
+      flash[:danger] = t(:danger_deck_create)
+      redirect_to action: "new"
+    end
   end
 
   def destroy

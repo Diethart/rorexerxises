@@ -55,7 +55,7 @@ RSpec.feature "DeckManage", type: :feature do
 
     find('a', text: "Сделать текущей").click
 
-    expect(page).to have_text("Ваши данные изменены!")
+    expect(page).to have_text("Вы изменили свои данные!")
   end
 
 end

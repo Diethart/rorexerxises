@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:user][:email], params[:user][:password])
     if @user
+      set_locale
       flash[:success] = t(:success_login)
       redirect_to check_path
     else
@@ -18,6 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
+    set_locale
     flash[:info] = t(:info_logout)
     redirect_to root_path
   end

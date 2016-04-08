@@ -10,9 +10,8 @@ RSpec.feature "Login", type: :feature do
 
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: '1111'
-    click_button 'Login'
-
-    expect(page).to have_text('Вы зашли в систему!')
+    click_button I18n.t(:login_session)
+    expect(page).to have_text(I18n.t(:success_login))
   end
 
     scenario 'User login with wrong data' do
@@ -20,8 +19,8 @@ RSpec.feature "Login", type: :feature do
 
     fill_in 'user_email', with: "some@gmail.com"
     fill_in 'user_password', with: "password123"
-    click_button 'Login'
+    click_button I18n.t(:login_session)
 
-    expect(page).to have_text("Неверный e-mail или пароль")
+    expect(page).to have_text(I18n.t(:danger_login))
   end
 end

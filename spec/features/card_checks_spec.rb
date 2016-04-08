@@ -18,7 +18,7 @@ RSpec.feature "CardChecks", type: :feature do
     visit check_path
 
     fill_in 'card_original_text', :with => 'text'
-    click_button 'Check'
+    click_button 'Проверить'
 
     expect(page).to have_text("Success!")
   end
@@ -27,7 +27,7 @@ RSpec.feature "CardChecks", type: :feature do
     visit check_path
 
     fill_in 'card_original_text', :with => 'txet2'
-    click_button 'Check'
+    click_button 'Проверить'
 
     expect(page).to have_text("Вы ввели слово txet2 вместо text и совершили 2 ошибок!")
   end
