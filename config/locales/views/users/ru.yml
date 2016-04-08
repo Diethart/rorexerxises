@@ -9,4 +9,7 @@ ru:
   user_change_email:         "Сменить e-mail"
   user_change_password:      "Сменить пароль"
   user_create:               "Зарегистрироваться"
+  user_locale_change:        "Выберите ваш язык"
+  user_change_locale:        "Сменить язык"
+  user_locale:               "Ваш язык"
 

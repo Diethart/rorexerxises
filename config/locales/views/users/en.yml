@@ -9,3 +9,6 @@ en:
   user_change_email:         "Change e-mail"
   user_change_password:      "Change password"
   user_create:               "Register"
+  user_locale_change:        "Choose your language"
+  user_change_locale:        "Change lang"
+  user_locale:               "Your language"

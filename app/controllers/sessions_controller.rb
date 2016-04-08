@@ -21,4 +21,9 @@ class SessionsController < ApplicationController
     flash[:info] = t(:info_logout)
     redirect_to root_path
   end
+
+  def set_user_locale
+    session[:locale] = params[:locale]
+    redirect_to :back
+  end
 end

@@ -15,4 +15,11 @@
     <%= f.button :submit, t(:user_change_password) %>
   <% end %>
 </p>
+<p>
+<label> <%= t(:user_locale_change) %> </label>
+  <%= simple_form_for @user, method: :patch do |f| %>
+    <%= f.input  :locale, label: t(:user_locale),  collection: [%w[English en], %w[Русский ru]], include_blank: false %>
+    <%= f.button :submit, t(:user_change_locale) %>
+  <% end %>
+</p>
 </div>
