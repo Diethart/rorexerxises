@@ -32,6 +32,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      current_user.locale = @user.locale
+      set_locale
       flash[:success] = t(:user_data_changed_success)
     else
       flash[:danger] =  t(:user_data_changer_danger)
