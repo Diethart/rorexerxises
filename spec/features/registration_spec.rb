@@ -3,6 +3,10 @@ require 'spec_helper'
 require 'capybara/rspec'
 
 RSpec.feature "Registration", type: :feature do
+  before(:all) do
+    page.driver.header 'Accept-Language', "en"
+  end
+
   scenario 'User input correct data' do
     visit new_user_path
 

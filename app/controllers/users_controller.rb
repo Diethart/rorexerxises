@@ -6,15 +6,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @http_accept_language = http_accept_language.compatible_language_from(I18n.available_locales)
-    @http_accept_language = "en" if Rails.env.test?
+    @http_accept_language = session[:locale] || http_accept_language.compatible_language_from(I18n.available_locales)
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       login( user_params[:email], user_params[:password] )
-      set_locale
       UserNotification.welcome_email(current_user).deliver_now
       flash[:success] = t(:success_login)
       redirect_to cards_path

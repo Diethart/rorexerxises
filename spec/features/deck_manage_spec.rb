@@ -18,9 +18,9 @@ RSpec.feature "DeckManage", type: :feature do
   scenario 'User create deck with right data' do
     visit decks_path
 
-    click_link 'Создать колоду'
+    click_link I18n.t(:deck_create)
     fill_in 'deck_name', with: "test_deck_name"
-    click_button 'Создать колоду'
+    click_button I18n.t(:deck_create)
 
     expect(page).to have_text("test_deck_name")
   end
@@ -28,16 +28,16 @@ RSpec.feature "DeckManage", type: :feature do
   scenario 'User create deck with empty field' do
     visit decks_path
 
-    click_link 'Создать колоду'
-    click_button 'Создать колоду'
+    click_link I18n.t(:deck_create)
+    click_button I18n.t(:deck_create)
 
-    expect(page).to have_text("Вы должны ввести имя колоды!")
+    expect(page).to have_text(I18n.t(:danger_deck_create))
   end
 
   scenario 'User delete deck' do
     visit decks_path
 
-    all('a', text: "Удалить колоду").last.click
+    all('a', text: I18n.t(:deck_delete)).last.click
 
     expect(page).not_to have_text(second_deck.name)
   end
@@ -45,17 +45,17 @@ RSpec.feature "DeckManage", type: :feature do
   scenario 'User delete current deck' do
     visit decks_path
 
-    all('a', text: "Удалить колоду").first.click
+    all('a', text: I18n.t(:deck_delete)).first.click
 
-    expect(page).to have_text("Нельзя удалить текущую колоду!")
+    expect(page).to have_text(I18n.t(:danger_deck_delete))
   end
 
   scenario 'User changes current deck' do
     visit decks_path
 
-    find('a', text: "Сделать текущей").click
+    find('a', text: I18n.t(:deck_make_current)).click
 
-    expect(page).to have_text("Вы изменили свои данные!")
+    expect(page).to have_text(I18n.t(:user_data_changed_success))
   end
 
 end
