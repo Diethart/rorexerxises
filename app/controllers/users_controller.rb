@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @http_accept_language = http_accept_language.compatible_language_from(I18n.available_locales)
+    @http_accept_language = "en" if Rails.env.test?
   end
 
   def create
