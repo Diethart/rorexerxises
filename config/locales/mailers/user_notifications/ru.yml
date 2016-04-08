@@ -1,2 +1,3 @@
 ru:
-  test: "test"
+  welcome_flashcards: "Добро пожаловать во Флешкарточкер!"
+  notify_flashcards:  "У вас есть непроверенные карточки!"

@@ -4,7 +4,7 @@ class UserNotification < ApplicationMailer
   def welcome_email(user)
     @user = user
     @url  = ENV['HEROKU_URL']
-    mail(to: @user.email, subject: 'Welcome to Flashcardsapp!')
+    mail(to: @user.email, subject: t(:welcome_flashcards))
   end
 
   def self.send_notifications
@@ -17,6 +17,6 @@ class UserNotification < ApplicationMailer
   def notify_user(email, count)
     @url  = ENV['HEROKU_URL']
     @cards_count = count
-    mail(to: email, subject: "У вас есть непроверенные карточки!")
+    mail(to: email, subject: t(:notify_flashcards))
   end
 end
