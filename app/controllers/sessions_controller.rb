@@ -19,13 +19,16 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    set_locale
     flash[:info] = t(:info_logout)
     redirect_to root_path
   end
 
   def set_user_locale
-    session[:locale] = params[:locale]
+    if current_user
+      User.find(current_user.id).update(locale: params[:locale])
+    else
+      session[:locale] = params[:locale]
+    end
     redirect_to :back
   end
 end

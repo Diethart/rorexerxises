@@ -34,12 +34,10 @@
               <li><a href= <%= login_path %>    > <%= t(:login) %></a></li>
             <% end %>
           </ul>
-          <% if current_user.nil? %>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Русский', locale_path(:locale => "ru"), method: :post %></li>
-              <li><%= link_to 'English', locale_path(:locale => "en"), method: :post %></li>
-            </ul>
-          <% end %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Русский', locale_path(:locale => "ru"), method: :post %></li>
+            <li><%= link_to 'English', locale_path(:locale => "en"), method: :post %></li>
+          </ul>
         </div>
       </div>
     </div>
