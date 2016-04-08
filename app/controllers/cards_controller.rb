@@ -12,10 +12,10 @@ class CardsController < ApplicationController
   def create
     @new_card = Card.new(card_params)
     if @new_card.save
-      flash[:success] = "Вы создали карточку!"
+      flash[:success] = t(:success_create_card)
       redirect_to @new_card
     else
-      flash[:danger] = "Вы неправильно заполнили поля!"
+      flash[:danger] =  t(:danger_create_card)
       redirect_to :back
     end
   end

@@ -1,0 +1,10 @@
+en:
+  flashcards_title:  "Flashcards"
+  main:              "Main"
+  all_cards:         "All cards"
+  add_card:          "Add card"
+  profile:           "My profile"
+  exit:              "Logout"
+  login_via_twitter: "Login via Twitter"
+  register:          "Register"
+  login:             "Login"

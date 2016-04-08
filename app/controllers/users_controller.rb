@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       login( user_params[:email], user_params[:password] )
       UserNotification.welcome_email(@user).deliver_later
-      flash[:success] = 'Вы вошли в систему!'
+      flash[:success] = t(:success_login)
       redirect_to cards_path
     else
       render 'new'
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Ваши данные изменены!"
+      flash[:success] = t(:user_data_changed_success)
     else
-      flash[:danger] = "Где-то ошибка..."
+      flash[:danger] =  t(:user_data_changer_danger)
     end
     redirect_to :back
   end

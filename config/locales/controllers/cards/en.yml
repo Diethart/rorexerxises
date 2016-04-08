@@ -1,0 +1,3 @@
+en:
+  success_create_card: "You've created card!"
+  danger_create_card:  "You filled input fields with wrong data!"

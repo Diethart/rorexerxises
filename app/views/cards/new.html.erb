@@ -1,13 +1,21 @@
 <% if @new_card %>
+
   <%= simple_form_for @new_card do |f| %>
-    <%= f.input :original_text %>
-    <%= f.input :translated_text %>
-    <%= f.input :avatar, type: :file %>
+
+    <%= f.input :original_text,       label: t(:orig_text)  %>
+    <%= f.input :translated_text,     label: t(:trans_text) %>
+    <%= f.input :avatar, type: :file, label: t(:avatar)     %>
+
     <%= f.hidden_field :review_date, value: DateTime.now.beginning_of_hour %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :deck_id, value: current_user.current_deck_id %>
-    <%= f.button :submit %>
+
+    <%= f.button :submit, t(:create_card) %>
+
   <% end %>
+
 <% else %>
-  <label> Сперва создайте колоду и сделайте её текущей! </label>
+
+  <label> <%= t(:deck_danger) %> </label>
+
 <% end %>

@@ -1,0 +1,3 @@
+en:
+  oauths_login:   "You have successfully log in from %{provider}"
+  oauths_danger:  "Failed to login from %{provider}"

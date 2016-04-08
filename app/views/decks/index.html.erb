@@ -5,8 +5,8 @@
 <table class="table table-bordered">
 
   <tr>
-    <td> Name            </td>
-    <td> Number of cards </td>
+    <td> <%= t(:deck_name)            %> </td>
+    <td> <%= t(:deck_number_of_cards) %> </td>
   </tr>
 
   <% @decks.each do |deck| %>
@@ -15,14 +15,14 @@
       <td> <%= deck.cards.count %> </td>
       <td>
         <% unless deck.id == current_user.current_deck_id %>
-          <a href= <%= user_path(current_user.id, { user: { current_deck_id: deck.id }}) %> data-method="patch" class="btn btn-success" role="button"> Сделать текущей </a>
+          <a href= <%= user_path(current_user.id, { user: { current_deck_id: deck.id }}) %> data-method="patch" class="btn btn-success" role="button"> <%= t(:deck_make_current) %> </a>
         <% end %>
       </td>
-      <td> <a href= <%= deck_path(deck) %>                                  data-method="delete" class="btn btn-danger" role="button"> Удалить колоду  </a></td>
+      <td> <a href= <%= deck_path(deck) %> data-method="delete" class="btn btn-danger" role="button"> <%= t(:deck_delete) %> </a></td>
     </tr>
   <% end %>
 
 </table>
 
-<a href= <%= new_deck_path %> class="btn btn-default" role="button"> Создать колоду </a>
+<a href= <%= new_deck_path %> class="btn btn-default" role="button"> <%= t(:deck_create) %> </a>
 </div>

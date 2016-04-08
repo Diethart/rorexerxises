@@ -1,0 +1,12 @@
+ru:
+  user_email:                "Ваш e-mail"
+  user_password:             "Пароль"
+  user_email_change:         "Сменить почту"
+  user_password_change:      "Сменить пароль"
+  user_new_email:            "Ваш новый e-mail"
+  user_new_password:         "Новый пароль"
+  user_password_confirm:     "Подтвердите пароль"
+  user_change_email:         "Сменить e-mail"
+  user_change_password:      "Сменить пароль"
+  user_create:               "Зарегистрироваться"
+

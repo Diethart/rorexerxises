@@ -1,0 +1,8 @@
+ru:
+  deck_create:          "Создать колоду"
+  deck_name_create:     "Название новой колоды"
+  deck_name:            "Название колоды"
+  deck_number_of_cards: "Кол-во карточек"
+  deck_make_current:    "Сделать текущей"
+  deck_delete:          "Удалить колоду"
+

@@ -1,0 +1,3 @@
+ru:
+  danger_deck_create: "Вы должны ввести имя колоды!"
+  danger_deck_delete: "Нельзя удалить текущую колоду!"

@@ -1,0 +1,3 @@
+ru:
+  success_create_card: "Вы создали карточку!"
+  danger_create_card:  "Вы неверно заполнили поля!"

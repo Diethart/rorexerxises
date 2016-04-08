@@ -1,0 +1,12 @@
+en:
+  show:             "Show"
+  edit:             "Edit"
+  delete:           "Delete"
+  orig_text:        "Original Text"
+  trans_text:       "Translated text"
+  review_date:      "Review date"
+  no_decks:         "You don't have any decks!"
+  avatar:           "Avatar"
+  update_card:      "Change card"
+  create_card:      "Create card"
+  deck_danger:      "You must create deck and choose it as current first!"

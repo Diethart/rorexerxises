@@ -1,9 +1,9 @@
 <div class="col-xs-3">
   <ul class="nav nav-tabs tabs-left">
 
-    <li <%= 'class="active"'.html_safe if params[:action] == "show" %> > <a href=<%= user_path(current_user.id)      %> >    Profile        </a></li>
-    <li <%= 'class="active"'.html_safe if params[:action] == "edit" %> > <a href=<%= edit_user_path(current_user.id) %> >    Edit E-mail    </a></li>
-    <li <%= 'class="active"'.html_safe if params[:action] == "decks" %> > <a href=<%= decks_path                     %> >    Decks          </a></li>
+    <li <%= 'class="active"'.html_safe if params[:action] == "show" %> > <a href=<%= user_path(current_user.id)      %> > <%= t(:partial_profile) %> </a></li>
+    <li <%= 'class="active"'.html_safe if params[:action] == "edit" %> > <a href=<%= edit_user_path(current_user.id) %> > <%= t(:partial_edit)    %> </a></li>
+    <li <%= 'class="active"'.html_safe if params[:action] == "decks" %> > <a href=<%= decks_path                     %> > <%= t(:partial_decks)   %> </a></li>
 
   </ul>
 </div>

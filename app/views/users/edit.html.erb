@@ -1,18 +1,18 @@
  <%= render partial: "partials/panel" %>
  <div class="col-xs-9">
  <p>
- <label> Change E-mail </label>
+ <label> <%= t(:user_email_change) %> </label>
  <%= simple_form_for @user, method: :patch do |f| %>
-    <%= f.input :email %>
-    <%= f.button :submit, "Change" %>
+    <%= f.input :email, label: t(:user_new_email) %>
+    <%= f.button :submit, t(:user_change_email) %>
   <% end %>
 </p>
 <p>
-<label> Change password </label>
+<label> <%= t(:user_password_change) %> </label>
   <%= simple_form_for @user, method: :patch do |f| %>
-    <%= f.input :password, input_html: { value: "*****" } %>
-    <%= f.input :password_confirmation, input_html: { value: "*****" } %>
-    <%= f.button :submit, "Change" %>
+    <%= f.input :password,              label: t(:user_new_password),     input_html: { value: "*****" } %>
+    <%= f.input :password_confirmation, label: t(:user_password_confirm), input_html: { value: "*****" } %>
+    <%= f.button :submit, t(:user_change_password) %>
   <% end %>
 </p>
 </div>
