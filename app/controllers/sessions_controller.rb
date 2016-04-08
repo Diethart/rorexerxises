@@ -17,9 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    tmp = current_user.locale
     logout
-    session[:locale] = tmp
     flash[:info] = t(:info_logout)
     redirect_to root_path
   end
