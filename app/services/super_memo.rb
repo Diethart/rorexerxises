@@ -31,7 +31,11 @@ class SuperMemo
   end
 
   def new_memo_count
-    params[:internum] + 1
+    if params[:mark] < 3
+      params[:internum]
+    else
+      params[:internum] + 1
+    end
   end
 
   private
