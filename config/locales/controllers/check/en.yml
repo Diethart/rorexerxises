@@ -1,3 +1,3 @@
 en:
   success_check: "You're right!"
-  danger_check:  "You're wrong. Try another one! You have %{attempts} left. You entered %{entered_word} instead of %{original_word} and made %{err_number} mistakes!"
+  danger_check:  "You're wrong. Try another one! You entered %{entered_word} instead of %{original_word} and made %{err_number} mistakes!"

@@ -1,3 +1,3 @@
 ru:
   success_check: "Вы угадали!"
-  danger_check:  "Вы ошиблись! Попробуйте снова! У вас осталось %{attempts} попыток! Вы ввели слово %{entered_word} вместо %{original_word} и совершили %{err_number} ошибок!"
+  danger_check:  "Вы ошиблись! Попробуйте снова! Вы ввели слово %{entered_word} вместо %{original_word} и совершили %{err_number} ошибок!"
