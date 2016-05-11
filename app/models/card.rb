@@ -18,8 +18,8 @@ class Card < ActiveRecord::Base
     original_text.downcase == text.downcase
   end
 
-  def accept_answer(next_date, efactor, iter_number)
-    update( review_date: next_date, memo_count: iter_number, efactor: efactor )
+  def accept_answer(params)
+    update( review_date: params[:review_date], memo_count: params[:memo_count], efactor: params[:efactor] )
   end
 
   private

@@ -7,14 +7,13 @@ class CheckController < ApplicationController
   def check
     card = Card.find(params[:card][:id])
     err_number = check_by_levenshtein( card.original_text, params[:card][:original_text] )
-    supermemo = SuperMemo.new( { err_number: err_number, internum: card.memo_count, efactor: card.efactor } )
     result = card.correct? params[:card][:original_text]
     if result
       flash[:success] = t(:success_check)
     else
       flash[:danger] = t(:danger_check, entered_word: params[:card][:original_text], original_word: card.original_text, err_number: err_number)
     end
-    card.accept_answer( supermemo.next_review_date, supermemo.new_efactor, supermemo.new_memo_count )
+    card.accept_answer( SuperMemo.get_data({ err_number: err_number, internum: card.memo_count, efactor: card.efactor }))
     redirect_to check_path
   end
 
