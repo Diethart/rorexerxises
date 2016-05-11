@@ -27,10 +27,12 @@ class SuperMemo
 
     def new_efactor
       efactor = params[:efactor] + (0.1 - (5 - params[:mark]) * (0.08 + (5 - params[:mark]) * 0.02))
-      if efactor < 1.3
-        efactor = 1.3
+      efactor = if efactor < 1.3
+        1.3
       elsif efactor > 2.5
-        efactor = 2.5
+        2.5
+      else
+        efactor
       end
       efactor.round(1)
     end
