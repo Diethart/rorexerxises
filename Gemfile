@@ -17,6 +17,8 @@ gem 'whenever', require: false
 gem 'valid_email'
 gem 'http_accept_language'
 gem 'rails_12factor'
+gem 'rollbar'
+gem 'mail'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
