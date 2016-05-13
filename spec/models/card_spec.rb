@@ -28,36 +28,6 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  describe '#right_answer' do
-    let(:time) { DateTime.now.beginning_of_hour }
-
-    it 'should be 12h/3d/1w/2w/1m bigger than today' do
-      5.times do |i|
-        card.right_answer
-        expect(card.review_date).to eq(time + Card.intervals(i))
-      end
-    end
-
-    it 'should be 1 month bigger than today' do
-      10.times do
-        card.right_answer
-      end
-      expect(card.review_date).to eq(time + Card.intervals(4))
-    end
-  end
-
-  describe '#wrong_answer' do
-
-    it 'should turn memo_count to zero' do
-      3.times do
-        card.right_answer
-        card.wrong_answer
-      end
-      expect(card.memo_count).to eq(0)
-    end
-  end
-
-
   describe '.random' do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:deck) { FactoryGirl.create(:deck, user: user) }
