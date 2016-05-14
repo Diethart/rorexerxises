@@ -1,17 +1,19 @@
-<% if @card_random %>
-  <div class="row">
-    <div class="col-sm-5">
-      <img src=<%= @card_random.avatar.url %>>
+<section id = "cards_check" >
+  <% if @card_random %>
+    <div class="row">
+      <div class="col-sm-5">
+        <img src=<%= @card_random.avatar.url %>>
+      </div>
+      <div class="col-sm-7">
+        <%= simple_form_for @card_random, url: check_path, method: :post, remote: true do |f| %>
+          <label> <%= t(:trans_text) %>: <%= @card_random.translated_text %> </label>
+          <%= f.input :original_text, label: t(:orig_text), placeholder: t(:placeholder_check), input_html: { value: nil } %>
+          <%= f.hidden_field :id, :value => @card_random.id %>
+          <%= f.button :submit, t(:check), id: "check" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-7">
-      <%= simple_form_for @card_random, url: check_path, method: :post do |f| %>
-        <label> <%= t(:trans_text) %>: <%= @card_random.translated_text %> </label>
-        <%= f.input :original_text, label: t(:orig_text), placeholder: t(:placeholder_check), input_html: { value: nil } %>
-        <%= f.hidden_field :id, :value => @card_random.id %>
-        <%= f.button :submit, t(:check) %>
-      <% end %>
-    </div>
-  </div>
-<% else %>
-  <label> <%= t(:check_ok) %> </label>
-<% end %>
+  <% else %>
+    <label> <%= t(:check_ok) %> </label>
+  <% end %>
+</section>
