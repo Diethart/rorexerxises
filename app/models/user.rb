@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def self.get_users_with_number_of_expired_cards
     User.includes(:cards).where('cards.review_date <= ?', DateTime.now).references(:cards).map { |user| [user.email, user.cards.length] }
   end
+
+  def admin?
+    admin
+  end
 end
