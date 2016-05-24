@@ -1,4 +1,4 @@
-class CheckController < ApplicationController
+class Dashboard::CheckController < ApplicationController
 
   def index
     @card_random = current_user.current_deck.cards.random if current_user.current_deck
