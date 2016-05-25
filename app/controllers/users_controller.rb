@@ -40,6 +40,11 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    current_user.id == params[:id].to_i ? ( flash[:danger] = t(:danger_user_delete) ):(User.destroy(params[:id]))
+    redirect_to :back
+  end
+
   private
 
   def user_params

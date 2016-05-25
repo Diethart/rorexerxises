@@ -134,6 +134,8 @@ GEM
       rack (>= 1.2, < 3)
     pg (0.18.4)
     puma (3.4.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -171,6 +173,7 @@ GEM
       rake
     rdoc (4.2.2)
       json (~> 1.4)
+    rolify (5.1.0)
     rollbar (2.11.3)
       multi_json
     rspec-core (3.4.4)
@@ -258,8 +261,10 @@ DEPENDENCIES
   nokogiri
   pg
   puma
+  pundit
   rails (= 4.2.6)
   rails_12factor
+  rolify
   rollbar
   rspec-rails
   sass-rails (~> 5.0)
@@ -274,4 +279,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.11.2
+   1.12.4

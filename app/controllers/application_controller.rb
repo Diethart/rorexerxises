@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  include Pundit
   before_action :require_login, :set_locale
 
   protect_from_forgery with: :exception

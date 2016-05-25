@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope module: "dashboard" do
     resources :cards
     resources :decks, except: [:show]
+    resources :admins, only:  [:index]
     get  'check', to: 'check#index'
     post 'check', to: 'check#check'
   end

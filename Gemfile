@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'pg'
+gem 'pundit'
 gem 'puma'
+gem 'rolify'
 gem 'simple_form'
 gem 'nokogiri'
 gem 'sorcery'
@@ -46,4 +48,3 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
