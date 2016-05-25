@@ -21,6 +21,10 @@ FactoryGirl.define do
     password '1111'
     password_confirmation '1111'
     locale 'ru'
+
+    factory :admin do
+      after(:create) { |user| user.add_role :admin }
+    end
   end
 
   factory :card do
