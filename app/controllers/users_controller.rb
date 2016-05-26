@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :redirect_back, olny: :destroy
 
   def index
   end
@@ -41,14 +42,21 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    current_user.id == params[:id].to_i ? ( flash[:danger] = t(:danger_user_delete) ):(User.destroy(params[:id]))
-    redirect_to :back
+    User.destroy(params[:id])
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id, :locale)
+    redirect_to admins_path
+  end
+
+  def redirect_back
+    if current_user.id == params[:id].to_i
+      flash[:danger] = t(:danger_user_delete)
+      redirect_to :back
+    end
   end
 
 end
