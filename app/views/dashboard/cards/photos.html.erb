@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <% @photos.each do |photo| %>
+          <div class="col-xs-6 col-md-3">
+            <a href="#" id="flickr_image" class="thumbnail">
+              <img src=" <%= photo %> " class = "flickr-image">
+            </a>
+          </div>
+    <% end %>
+  </div>
+</div>

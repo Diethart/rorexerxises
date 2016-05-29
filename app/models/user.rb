@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  rolify :role_cname => 'Rights'
+  has_and_belongs_to_many :rights, :join_table => :users_rights
+  after_create :assign_rights
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end
@@ -18,7 +21,7 @@ class User < ActiveRecord::Base
     User.includes(:cards).where('cards.review_date <= ?', DateTime.now).references(:cards).map { |user| [user.email, user.cards.length] }
   end
 
-  def admin?
-    admin
+  def assign_rights
+    add_role :user
   end
 end

@@ -1,0 +1,37 @@
+<!-- Button trigger modal -->
+<button id="modal_photos" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  Load from Flickr
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Flickr photos</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer" style="text-align: left;">
+        <button id="modal_refresh" type="button" class="btn btn-default">Refresh</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var load_photos = function() {
+    $.ajax({ datatype: "html", url: "<%= photos_path %>", type: "POST"}).done(function(data){
+      $(".modal-body").html(data)
+    });
+  };
+  $(document).on("click", "#flickr_image", function() {
+    $("input#card_avatar").replaceWith('<input type="url" hidden="true" value = "' + $(":first-child", this).attr("src") + '" name="card[remote_avatar_url]" id="card_remote_avatar_url" >');
+    $("#myModal").modal('hide');
+  });
+  $(document).on("page:load", function(){
+    $("#modal_photos").click(load_photos);
+    $("#modal_refresh").click(load_photos);
+  });
+</script>

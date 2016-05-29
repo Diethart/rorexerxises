@@ -1,0 +1,5 @@
+en:
+  user_delete:        "Delete user"
+  danger_user_delete: "You can't delete current user"
+  not_allowed:        "You don't have permissions to do it"
+  admins:             "Admins"

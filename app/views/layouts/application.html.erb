@@ -25,7 +25,9 @@
               <li><a href= <%= cards_path %>    >              <%= t(:all_cards) %> </a></li>
               <li><a href= <%= new_card_path %> >              <%= t(:add_card)  %> </a></li>
               <li><a href= <%= user_path(current_user.id) %> > <%= t(:profile)   %> </a></li>
-
+              <% if policy(:admins).link? %>
+                <li><a href= <%= admins_path %>                > <%= t(:admins)    %> </a></li>
+              <% end %>
               <li><%= link_to t(:exit), logout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to t(:login_via_twitter), auth_at_provider_path(:provider => :twitter) %></li>
