@@ -37,6 +37,14 @@ class Dashboard::CardsController < ApplicationController
     redirect_to action: 'index'
   end
 
+  def photos
+    @photos = FlickrPhotos.new.get_photos(12)
+
+    respond_to do |format|
+      format.html { render :layout => false}
+    end
+  end
+
   private
 
   def have_current_deck?
@@ -48,8 +56,6 @@ class Dashboard::CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :avatar, :deck_id)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :avatar, :deck_id, :remote_avatar_url)
   end
 end
-
-

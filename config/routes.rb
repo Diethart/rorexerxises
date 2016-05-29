@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :cards
     resources :decks, except: [:show]
     resources :admins, only:  [:index]
-    get  'check', to: 'check#index'
-    post 'check', to: 'check#check'
+    get  'check',  to: 'check#index'
+    post 'check',  to: 'check#check'
+    post 'photos', to: 'cards#photos'
   end
 
   scope module: "home" do
